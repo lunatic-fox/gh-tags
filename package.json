@@ -1,0 +1,18 @@
+{
+  "name": "gh-tags",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {},
+  "keywords": [],
+  "author": "Josélio de S. C. Júnior",
+  "license": "MIT",
+  "devDependencies": {
+    "@vercel/node": "^1.12.1"
+  },
+  "dependencies": {
+    "axios": "^0.26.0",
+    "text-to-svg": "^3.1.5",
+    "yaml": "^1.10.2"
+  }
+}

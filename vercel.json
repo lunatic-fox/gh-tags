@@ -1,0 +1,13 @@
+{
+    "routes": [
+        {
+            "src": "/",
+            "dest": "https://github.com/joseliojunior/gh-tags"
+        },
+        {
+            "src": "/api",
+            "methods": [ "GET" ],
+            "dest": "/api/github-tags.js"
+        }
+    ]
+}
