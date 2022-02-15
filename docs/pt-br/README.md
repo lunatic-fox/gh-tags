@@ -53,7 +53,7 @@ Vejamos alguns exemplos:
 
 &nbsp;&nbsp;&nbsp;&nbsp;Alguns nomes de linguagem tem `espaço`, `+` ou `*`. Nesses casos eles são substituídos por esses símbolos:
 
-- `space` > `-`<br>
+- `espaço` > `-`<br>
 &nbsp;&nbsp;&nbsp;&nbsp;*ex.: `Regular expression` > `regular-expression`* &nbsp;&nbsp;&nbsp;&nbsp; ![](https://gh-tags.vercel.app/api?lang=regular-expression&type=squared&size=small)
 
 <br>
