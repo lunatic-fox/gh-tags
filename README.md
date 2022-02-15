@@ -51,7 +51,7 @@ Let's see some examples:
 
 <h2 name="lang">Language name special symbols</h2>
 
-&nbsp;&nbsp;&nbsp;&nbsp;Some language names have `space`, `+` or `*`. In that case they are replaced by those symbols:
+&nbsp;&nbsp;&nbsp;&nbsp;Some language names have `space`, `+` or `*`. In those cases they are replaced by those symbols:
 
 - `space` > `-`<br>
 &nbsp;&nbsp;&nbsp;&nbsp;*e.g.: `Regular expression` > `regular-expression`* &nbsp;&nbsp;&nbsp;&nbsp; ![](https://gh-tags.vercel.app/api?lang=regular-expression&type=squared&size=small)
