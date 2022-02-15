@@ -1,3 +1,9 @@
+/**
+ * @author Josélio de S. C. Júnior <joseliojrx25@gmail.com>
+ * @copyright Josélio de S. C. Júnior 2021
+ * @license MIT
+ *//**/
+
 const build = require('../src/build');
 
 module.exports = async (req, res) => {
