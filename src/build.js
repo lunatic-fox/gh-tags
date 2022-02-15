@@ -1,3 +1,9 @@
+/**
+ * @author Josélio de S. C. Júnior <joseliojrx25@gmail.com>
+ * @copyright Josélio de S. C. Júnior 2021
+ * @license MIT
+ *//**/
+
 const axios = require('axios').default;
 const YAML = require('yaml');
 const wrapper = require('./wrapper');
