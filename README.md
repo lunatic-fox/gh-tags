@@ -9,6 +9,8 @@
 
 **If you ❤ this project and want to support me, please consider [donating](./docs/donation/README.md).**
   
+<img src="./docs/donation/src/jar.png" width="64">
+  
 </div>
 
 
