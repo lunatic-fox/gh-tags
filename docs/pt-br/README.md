@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="./docs/img/icon.png" width="120">
+  <img src="../img/icon.png" width="120">
   <br>
   <h1>
     Github Tags
@@ -129,6 +129,6 @@ Vejamos alguns exemplos:
 
 <div align="center">
 
-![](./img/powered-by-vercel.svg)
+![](../img/powered-by-vercel.svg)
 
 </div>
