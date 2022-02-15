@@ -22,11 +22,12 @@
 
 <h2 name="how">How to use</h2>
 &nbsp;&nbsp;&nbsp;&nbsp;Copy and paste the template URL below:
+
 ~~~
 https://gh-tags.vercel.app/api?lang=[LANGUAGE NAME]
 ~~~
 
-&nbsp;&nbsp;&nbsp;&nbsp;Then replace the value of `lang=[LANGUAGE NAME]` to any language known by Github. **[📃 Reference list of all languages know by Github](./docs/list/README.md)**
+&nbsp;&nbsp;&nbsp;&nbsp;Then replace the value of `lang=[LANGUAGE NAME]` to any language known by Github. **[📃 Reference list of all languages known by Github](./docs/list/README.md)**
 
 Let's see some examples:
 
@@ -47,7 +48,9 @@ Let's see some examples:
 <br>
 
 <h2 name="lang">Language name special symbols</h2>
+
 &nbsp;&nbsp;&nbsp;&nbsp;Some language names have `space`, `+` or `*`. In that case they are replaced by those symbols:
+
 - `space` > `-`<br>
 &nbsp;&nbsp;&nbsp;&nbsp;*e.g.: `Regular expression` > `regular-expression`* &nbsp;&nbsp;&nbsp;&nbsp; ![](https://gh-tags.vercel.app/api?lang=regular-expression&type=squared&size=small)
 
@@ -64,6 +67,7 @@ Let's see some examples:
 <br>
 
 <h2 name="cust">Customization</h2>
+
 &nbsp;&nbsp;&nbsp;&nbsp;There are some options to the output tag listed here:
 - `size=small` - This is the small version of tag. (height: 20px)
 - `type=squared` - This is the squared box version of tag.
@@ -97,22 +101,34 @@ Let's see some examples:
 <br>
 
 <h2 name="non">Non colored languages</h2>
-&nbsp;&nbsp;&nbsp;&nbsp;There are some languages without a specific color and they will be presented that way. <br>
-![](https://gh-tags.vercel.app/api?lang=cobol)
-![](https://gh-tags.vercel.app/api?lang=robots.txt&type=squared)
-![](https://gh-tags.vercel.app/api?lang=asl&size=small)
-![](https://gh-tags.vercel.app/api?lang=limbo&size=small&type=squared)
+
+&nbsp;&nbsp;&nbsp;&nbsp;There are some languages without a specific color and they will be presented that way.
+
+<div align="center">
+
+![](https://gh-tags.vercel.app/api?lang=cobol) ![](https://gh-tags.vercel.app/api?lang=robots.txt&type=squared) ![](https://gh-tags.vercel.app/api?lang=asl&size=small) ![](https://gh-tags.vercel.app/api?lang=limbo&size=small&type=squared)
+  
+</div>
+
 
 <br>
 
 <h2 name="lib">Libraries</h2>
 
-**[@vercel/node](#)**
+&nbsp;&nbsp;&nbsp;&nbsp;Look those amazing libraries used in this project!
 
-**[axios](#)**
+**[📕 @vercel/node](https://vercel.com/docs/runtimes)**
 
-**[text-to-svg](#)**
+**[📕 axios](https://github.com/axios/axios)**
 
-**[yaml](#)**
+**[📕 text-to-svg](https://www.npmjs.com/package/text-to-svg)**
+
+**[📕 yaml](https://www.npmjs.com/package/yaml)**
+
+<div align="center">
+
+![](./docs/img/powered-by-vercel.svg)
+
+</div>
 
 
