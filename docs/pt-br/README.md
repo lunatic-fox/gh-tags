@@ -5,7 +5,7 @@
     Github Tags
   </h1>
 
-**Se você ❤ este projeto e quer me apoiar, por favor considere fazer uma [doação](./donation/README.md).**
+**Se você ❤ este projeto e quer me apoiar, por favor considere fazer uma [doação](../donation/README.md).**
   
 </div>
 
