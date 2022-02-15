@@ -129,7 +129,7 @@ C - `c`
 
 C# - `c-sharp`
 
-C++ - `c++`
+C++ - `c-plus-plus`
 
 C-ObjDump - `c-objdump`
 
