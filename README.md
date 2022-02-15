@@ -13,11 +13,11 @@
 
 
 ## Summary
-&nbsp;&nbsp;&nbsp;&nbsp; [How to use](#how)<br>
-&nbsp;&nbsp;&nbsp;&nbsp; [Language name special symbols](#lang)<br>
-&nbsp;&nbsp;&nbsp;&nbsp; [Customization](#cust)<br>
-&nbsp;&nbsp;&nbsp;&nbsp; [Non colored languages](#non)<br>
-&nbsp;&nbsp;&nbsp;&nbsp; [Libraries](#lib)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [🔹 How to use](#how)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [🔹 Language name special symbols](#lang)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [🔹 Customization](#cust)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [🔹 Non colored languages](#non)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [🔹 Libraries](#lib)<br>
 
 
 <h2 name="how">How to use</h2>
@@ -119,13 +119,13 @@ Let's see some examples:
 
 &nbsp;&nbsp;&nbsp;&nbsp;Look those amazing libraries used in this project!
 
-**[📕 @vercel/node](https://vercel.com/docs/runtimes)**
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**[📕 @vercel/node](https://vercel.com/docs/runtimes)**
 
-**[📕 axios](https://github.com/axios/axios)**
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**[📕 axios](https://github.com/axios/axios)**
 
-**[📕 text-to-svg](https://www.npmjs.com/package/text-to-svg)**
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**[📕 text-to-svg](https://www.npmjs.com/package/text-to-svg)**
 
-**[📕 yaml](https://www.npmjs.com/package/yaml)**
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**[📕 yaml](https://www.npmjs.com/package/yaml)**
 
 <div align="center">
 
