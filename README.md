@@ -27,7 +27,9 @@
 https://gh-tags.vercel.app/api?lang=[LANGUAGE NAME]
 ~~~
 
-&nbsp;&nbsp;&nbsp;&nbsp;Then replace the value of `lang=[LANGUAGE NAME]` to any language known by Github. **[📃 Reference list of all languages known by Github](./docs/list/README.md)**
+&nbsp;&nbsp;&nbsp;&nbsp;Then replace the value of `lang=[LANGUAGE NAME]` to any language known by Github.
+
+**[📃 Reference list of all languages known by Github](./docs/list/README.md)**
 
 Let's see some examples:
 
