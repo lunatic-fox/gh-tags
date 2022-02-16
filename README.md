@@ -79,8 +79,8 @@ Let's see some examples:
 &nbsp;&nbsp;&nbsp;&nbsp;There are some options to the output tag listed here:
 - `size=small` - This is the small version of tag. (height: 20px)
 - `type=squared` - This is the squared box version of tag.
-- `size=regular` *(not usefull)* - This is the default size of tag. (height: 32px)
-- `type=rounded` *(not usefull)* - This is the default border radius tag value.
+- `size=regular` *(not useful)* - This is the default size of tag. (height: 32px)
+- `type=rounded` *(not useful)* - This is the default border radius tag value.
 
 &nbsp;&nbsp;&nbsp;&nbsp;All the options can be added by putting a `&` before the chosen option. Let's see some examples:
 
