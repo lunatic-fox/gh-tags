@@ -2,7 +2,7 @@
   <img src="../img/icon.png" width="120">
   <br>
   <h1>
-    Github Tags
+    GitHub Tags
   </h1>
 
 **Se você ❤ este projeto e quer me apoiar, por favor considere fazer uma [doação](../donation/README.md).**
