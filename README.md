@@ -57,7 +57,7 @@ Let's see some examples:
 
 <h2 name="lang">Language name special symbols</h2>
 
-&nbsp;&nbsp;&nbsp;&nbsp;Some language names have `space`, `+` or `*`. In those cases they are replaced by those symbols:
+&nbsp;&nbsp;&nbsp;&nbsp;Some language names have `space`, `+`, `#` or `*`. In those cases they are replaced by those symbols:
 
 - `space` > `-`<br>
 &nbsp;&nbsp;&nbsp;&nbsp;*e.g.: `Regular expression` > `regular-expression`* &nbsp;&nbsp;&nbsp;&nbsp; ![](https://gh-tags.vercel.app/api?lang=regular-expression&type=squared&size=small)
@@ -66,6 +66,11 @@ Let's see some examples:
 
 - `+` > `-plus`<br>
 &nbsp;&nbsp;&nbsp;&nbsp;*e.g.: `C++` > `c-plus-plus`* &nbsp;&nbsp;&nbsp;&nbsp; ![](https://gh-tags.vercel.app/api?lang=c-plus-plus&type=squared&size=small)
+
+<br>
+
+- `#` > `-sharp`<br>
+&nbsp;&nbsp;&nbsp;&nbsp;*e.g.: `C#` > `c-sharp`* &nbsp;&nbsp;&nbsp;&nbsp; ![](https://gh-tags.vercel.app/api?lang=c-sharp&type=squared&size=small)
 
 <br>
 
