@@ -5,7 +5,7 @@
  * This is a extension from this project in TypeScript:
  * @link https://github.com/joseliojunior/utils/blob/main/typescript/Kolorz.ts
  * @license MIT
- */
+ *//***/
 
 const rgx = {
     validHex: /^#*[a-f_A-F_0-9]{3,6}$/g,

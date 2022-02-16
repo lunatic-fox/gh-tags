@@ -2,7 +2,7 @@
  * @author Josélio de S. C. Júnior <joseliojrx25@gmail.com>
  * @copyright Josélio de S. C. Júnior 2021
  * @license MIT
- *//**/
+ *//***/
 
 const TextToSVG = require('text-to-svg');
 const Kolorz = require('../res/libraries/Kolorz');
@@ -12,7 +12,7 @@ const path = require('path').join(__dirname, '../res/fonts/UbuntuMono-Bold.ttf')
 const text = TextToSVG.loadSync(path);
 
 
-/**@param {{ name: string, color: string, transparent: boolean, size: string, type: string }} guide*/
+/**@param {{ name: string, color: string, transparent: boolean, size: string?, type: string? }} guide*/
 const wrapper = guide => {
     const { name, color, transparent, size, type } = guide;
     const boxHeight = size === 'small' ? 20 : 32;
@@ -21,7 +21,7 @@ const wrapper = guide => {
     const pos = size === 'small' ? 8 : 12;
     const width = +(((fontSize / 2) + .1) * name.length + rightPadding).toFixed();
     const contrastColor = Kolorz.hsl(Kolorz.hexHighlight(color, .3), 'hex');
-    const radius = type === 'rounded' ? (boxHeight / 2) : 1;
+    const radius = type === 'squared' ? 1 : (boxHeight / 2);
 
     const svg = text.getPath(name, {
         x: pos,
@@ -49,8 +49,6 @@ const wrapper = guide => {
         width="${width}"
         rx="${radius}"
         ry="${radius}"
-        x="1"
-        y="1"
         fill="${transparent ? "url(#pattern)" : color}"
         stroke="${contrastColor}"
         stroke-width="1"

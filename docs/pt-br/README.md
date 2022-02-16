@@ -76,10 +76,8 @@ Vejamos alguns exemplos:
 <h2 name="cust">Customização</h2>
 
 &nbsp;&nbsp;&nbsp;&nbsp;Existem algumas opções para a saída da tag listadas aqui:
-- `size=small` - Esta é a versão pequena da tag. (altura: 20px)
-- `type=squared` - Esta é a versão de caixa quadrada da tag.
-- `size=regular` *(não útil)* - Este é o tamanho padrão da tag. (altura: 32px)
-- `type=rounded` *(não útil)* - Este é o valor padrão do raio da borda da tag.
+- `size=small` - Esta é a versão pequena da tag. (altura: 20px) - Altura padrão: 32px.
+- `type=squared` - Esta é a versão de caixa quadrada da tag. - Versão padrão: rounded (arredondada).
 
 &nbsp;&nbsp;&nbsp;&nbsp;Todas as opções podem ser adicionadas colocando um `&` antes da opção escolhida. Vejamos alguns exemplos:
 
