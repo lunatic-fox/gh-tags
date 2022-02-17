@@ -20,8 +20,7 @@
 
 <h2 name="how">Como usar</h2>
 
-
-&nbsp;&nbsp;&nbsp;&nbsp;Copie e cole a URL modelo abaixo:
+&nbsp;&nbsp;&nbsp;&nbsp;Use o ***[GitHub Tags GUI](https://gh-tags.vercel.app/)*** para gerar seu link ou copie e cole a URL modelo abaixo:
 
 ~~~
 https://gh-tags.vercel.app/api?lang=[LANGUAGE NAME]
@@ -29,7 +28,7 @@ https://gh-tags.vercel.app/api?lang=[LANGUAGE NAME]
 
 &nbsp;&nbsp;&nbsp;&nbsp;Então substitua o valor de `lang=[LANGUAGE NAME]` por qualquer linguagem conhecida pelo Github.
 
-**[📃 Lista de referência de todas as linguagens conhecidas pelo Github](./list/README.md)**
+***[📃 Lista de referência de todas as linguagens conhecidas pelo Github](./list/README.md)***
 
 Vejamos alguns exemplos:
 
@@ -122,13 +121,13 @@ Vejamos alguns exemplos:
 
 &nbsp;&nbsp;&nbsp;&nbsp;Olhe essas bibliotecas incríveis usadas neste projeto!
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**[📕 @vercel/node](https://vercel.com/docs/runtimes)**
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;***[📕 @vercel/node](https://vercel.com/docs/runtimes)***
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**[📕 axios](https://github.com/axios/axios)**
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;***[📕 axios](https://github.com/axios/axios)***
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**[📕 text-to-svg](https://www.npmjs.com/package/text-to-svg)**
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;***[📕 text-to-svg](https://www.npmjs.com/package/text-to-svg)***
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**[📕 yaml](https://www.npmjs.com/package/yaml)**
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;***[📕 yaml](https://www.npmjs.com/package/yaml)***
 
 <div align="center">
 
