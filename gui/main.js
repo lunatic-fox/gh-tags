@@ -85,3 +85,34 @@ copy.onclick = () => {
     setTimeout(() => confirmed.style.display = 'none', 3000);
     navigator.clipboard.writeText(link.innerHTML);
 };
+
+
+window.addEventListener('keydown', e => {
+    if (e.key === 'Enter' || e.key === 'ArrowDown') {
+        switch (document.activeElement) {
+            case language:
+                size.focus();
+                break;
+            case size:
+                type.focus();
+                break;    
+            default:
+                language.focus();
+                break;
+        }
+    }
+
+    if (e.key === 'ArrowUp') {
+        switch (document.activeElement) {
+            case type:
+                size.focus();
+                break;
+            case size:
+                language.focus();
+                break;
+            default:
+                type.focus();
+                break;
+        }
+    }
+});
