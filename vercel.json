@@ -5,6 +5,10 @@
             "dest": "/gui/index.html"
         },
         {
+            "src": "/^(?!api)[^?].*|^api[^?].*",
+            "dest": "/404.html"
+        },
+        {
             "src": "/api",
             "methods": [ "GET" ],
             "dest": "/api/github-tags.js"
