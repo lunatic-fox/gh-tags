@@ -1,3 +1,9 @@
+/**
+ * @author Josélio de S. C. Júnior <joseliojrx25@gmail.com>
+ * @copyright Josélio de S. C. Júnior 2021
+ * @license MIT
+ *//***/
+ 
 /**@type {HTMLInputElement}*/
 const language = document.getElementById('language');
 
