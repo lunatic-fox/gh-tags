@@ -2,7 +2,7 @@
   <img src="./docs/img/icon.png" width="120">
   <br>
   <h1>
-    Github Tags
+    GitHub Tags
   </h1>
   
 **[Português do Brasil](./docs/pt-br/README.md)**

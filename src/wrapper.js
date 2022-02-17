@@ -49,6 +49,8 @@ const wrapper = guide => {
         width="${width}"
         rx="${radius}"
         ry="${radius}"
+        x="1"
+        y="1"
         fill="${transparent ? "url(#pattern)" : color}"
         stroke="${contrastColor}"
         stroke-width="1"
