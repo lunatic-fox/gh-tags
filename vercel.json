@@ -2,7 +2,7 @@
     "routes": [
         {
             "src": "/",
-            "dest": "https://github.com/joseliojunior/gh-tags"
+            "dest": "/gui/index.html"
         },
         {
             "src": "/api",
