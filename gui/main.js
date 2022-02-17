@@ -62,6 +62,7 @@ const response = () => {
         previewBox.className = 'group-flex';
         preview.removeAttribute('class');
 
+        imgP.height = toLink(size.value) === 'small' ? 20 : 32;
         imgP.removeAttribute('class');
         imgP.src = link.textContent;
         imgR.style.display = 'none';
