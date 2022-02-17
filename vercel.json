@@ -5,7 +5,11 @@
             "dest": "/gui/index.html"
         },
         {
-            "src": "/^(?!api)[^?].*|^api[^?].*",
+            "src": "/^api[^?].*",
+            "dest": "/404.html"
+        },
+        {
+            "src": "/api/(.*)",
             "dest": "/404.html"
         },
         {
