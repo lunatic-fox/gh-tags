@@ -8,8 +8,7 @@ const TextToSVG = require('text-to-svg');
 const Kolorz = require('../res/libraries/Kolorz');
 
 
-const path = require('path').join(__dirname, '../res/fonts/UbuntuMono-Bold.ttf');
-const text = TextToSVG.loadSync(path);
+const text = TextToSVG.loadSync(require('path').join(__dirname, '../res/fonts/UbuntuMono-Bold.ttf'));
 
 
 /**@param {{ name: string, color: string, transparent: boolean, size: string?, type: string? }} guide*/
@@ -35,7 +34,6 @@ const wrapper = guide => {
     return `<svg 
     width="${width + 2}"
     height="${boxHeight + 2}"
-    viewBox="0 0 ${width + 2} ${boxHeight + 2}"
     xmlns="http://www.w3.org/2000/svg"
     >${transparent ? `
     <defs>
