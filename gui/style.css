@@ -49,6 +49,11 @@ img {
     user-select: none;
 }
 
+h2 { 
+    max-width: 400px;
+    text-align: center;
+}
+
 h3 {
     margin-top: 20px;
     user-select: none;
