@@ -121,13 +121,13 @@ Vejamos alguns exemplos:
 
 &nbsp;&nbsp;&nbsp;&nbsp;Olhe essas bibliotecas incríveis usadas neste projeto!
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;***[📕 @vercel/node](https://vercel.com/docs/runtimes)***
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;📕 ***[@vercel/node](https://vercel.com/docs/runtimes)***
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;***[📕 axios](https://github.com/axios/axios)***
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;📕 ***[axios](https://github.com/axios/axios)***
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;***[📕 text-to-svg](https://www.npmjs.com/package/text-to-svg)***
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;📕 ***[text-to-svg](https://www.npmjs.com/package/text-to-svg)***
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;***[📕 yaml](https://www.npmjs.com/package/yaml)***
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;📕 ***[yaml](https://www.npmjs.com/package/yaml)***
 
 <div align="center">
 
