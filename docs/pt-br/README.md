@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="../img/icon.png" width="120">
+  <img src="../img/logo.png" width="120">
   <br>
   <h1>
     GitHub Tags

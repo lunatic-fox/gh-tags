@@ -12,9 +12,7 @@
 </head>
 <body>
     <img src="./gui/img/logo.png" width="100px">
-    <header>
-        GitHub Tags GUI
-    </header>
+    <header>GitHub Tags GUI</header>
     
     <section>
         <div class="group">
@@ -22,14 +20,29 @@
             <input type="text" id="language" placeholder="e.g.: JavaScript" spellcheck="false">
         </div>
 
-        <h3>Optional</h3>
-        <div class="group">
-            <div class="label">Size</div>
-            <input type="text" id="size" spellcheck="false">
+        <h3>Optional</h3>        
+        <div class="group-op">
+            <div class="label-op">Size</div>
+            <div class="group-flex sw-group">
+                <div id="regular">regular</div>
+                <div class="sw-box">
+                    <input id="size" type="checkbox" class="switch">
+                    <label for="size"></label>
+                </div>
+                <div id="small">small</div>
+            </div>
         </div>
-        <div class="group">
-            <div class="label">Type</div>
-            <input type="text" id="type" spellcheck="false">
+        
+        <div class="group-op">
+            <div class="label-op">Type</div>
+            <div class="group-flex sw-group">
+                <div id="rounded">rounded</div>
+                <div class="sw-box">
+                    <input id="type" type="checkbox" class="switch">
+                    <label for="type"></label>
+                </div>
+                <div id="squared">squared</div>
+            </div>
         </div>
 
         <h3>Preview</h3>
@@ -54,9 +67,8 @@
         </div>
 
         <div class="group-flex">
-            <div id="confirmed">Link copied! ✔</div>
+            <div id="confirmed"></div>
             <div id="link"></div>
-
             <button id="copy">
                 <svg width="6.35mm" height="6.35mm" viewBox="0 0 6.3499999 6.3499999">
                     <g transform="translate(13.229 -179.53)">
@@ -66,7 +78,6 @@
                     </g>
                 </svg>
             </button>
-
         </div>
     </section>
 

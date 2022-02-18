@@ -3,7 +3,7 @@
  * @copyright Josélio de S. C. Júnior 2021
  * @license MIT
  *//***/
- 
+
 /**@type {HTMLInputElement}*/
 const language = document.getElementById('language');
 
@@ -13,11 +13,26 @@ const link = document.getElementById('link');
 /**@type {HTMLInputElement}*/
 const size = document.getElementById('size');
 
+/**@type {HTMLDivElement}*/
+const regular = document.getElementById('regular');
+
+/**@type {HTMLDivElement}*/
+const small = document.getElementById('small');
+
 /**@type {HTMLInputElement}*/
 const type = document.getElementById('type');
 
+/**@type {HTMLDivElement}*/
+const rounded = document.getElementById('rounded');
+
+/**@type {HTMLDivElement}*/
+const squared = document.getElementById('squared');
+
 /**@type {HTMLButtonElement}*/
 const copy = document.getElementById('copy');
+
+/**@type {SVGAElement}*/
+const copyImg = document.getElementById('copy-img');
 
 /**@type {HTMLDivElement}*/
 const preview = document.getElementById('preview');
@@ -28,9 +43,6 @@ const previewBox = document.getElementById('preview-box');
 /**@type {HTMLDivElement}*/
 const confirmed = document.getElementById('confirmed');
 
-/**@type {SVGAElement}*/
-const copyImg = document.getElementById('copy-img');
-
 /**@type {HTMLImageElement}*/
 const imgP = document.getElementById('img-p');
 
@@ -38,16 +50,17 @@ const imgP = document.getElementById('img-p');
 const imgR = document.getElementById('img-r');
 
 
+const color = {
+    TURQUOISE: '#00ff9d',
+    LIGHT: '#cacaca',
+    DARK2: '#242424',
+    GREEN: '#66ff00',
+    RED: '#ff0040'
+};
+
+
 const url = `https://gh-tags.vercel.app/api?`;
 link.textContent = url;
-
-
-size.placeholder = `"small" or leave it blank`;
-type.placeholder = `"squared" or leave it blank`;
-
-
-copy.onmouseleave = () => copyImg.style.fill = '#cacaca';
-copy.onmouseover = () => copyImg.style.fill = '#242424';
 
 
 /**@param {string} str*/
@@ -59,66 +72,97 @@ const toLink = (str = '') => str
     .toLowerCase();
 
 
+/**@param {'error'?} status*/
+const copyBtn = status => {
+
+    copy.onmouseover = () => {
+        link.style.borderColor = status === 'error' ? color.RED : color.TURQUOISE;
+        copy.style.borderColor = status === 'error' ? color.RED : color.TURQUOISE;
+        copy.style.background = status === 'error' ? color.RED : color.TURQUOISE;
+        copyImg.style.fill = color.DARK2;
+    };
+
+    copy.onclick = () => {
+        confirmed.style.display = 'block';
+        setTimeout(() => confirmed.style.display = 'none', 3000);
+        status === 'error' ? null : navigator.clipboard.writeText(link.innerHTML);
+    };
+
+    confirmed.style.color = status === 'error' ? color.RED : color.GREEN;
+    confirmed.textContent = status === 'error' ? `Broken link! Can't be copied! ✘` : `Link copied! ✔`;
+};
+
+
+copyBtn();
+
+
+copy.onmouseleave = () => {
+    link.style.borderColor = color.LIGHT;
+    copy.style.borderColor = color.LIGHT;
+    copy.style.background = color.DARK2;
+    copyImg.style.fill = color.LIGHT;
+};
+
+
 const response = () => {
-    link.textContent = `${url}${language.value ? `lang=${toLink(language.value)}` : ''}${size.value ? `&size=${toLink(size.value)}` : ''}${type.value ? `&type=${toLink(type.value)}` : ''}`;
+    link.textContent = `${url}${language.value ? `lang=${toLink(language.value)}` : ''}${size.checked ? '&size=small' : ''}${type.checked ? '&type=squared' : ''}`;
 
     if (link.textContent === url) {
+        copyBtn();
         preview.className = 'none';
+        confirmed.style.right = 20;
+        link.style.color = color.LIGHT;
     } else {
+        confirmed.style.right = 10;
+
         previewBox.className = 'group-flex';
         preview.removeAttribute('class');
-
-        imgP.height = toLink(size.value) === 'small' ? 20 : 32;
+        
         imgP.removeAttribute('class');
         imgP.src = link.textContent;
         imgR.style.display = 'none';
+        
+        imgP.onload = () => {
+            copyBtn();
+            link.style.color = color.GREEN;
+        };
 
         imgP.onerror = () => {
+            link.style.color = color.RED;
             imgP.className = 'none';
             imgR.style.display = 'block';
+            copyBtn('error');
         };
     }
 };
 
 
 language.onchange = response;
-size.onchange = response;
-type.onchange = response;
 
 
-copy.onclick = () => {
-    confirmed.style.display = 'block';
-    setTimeout(() => confirmed.style.display = 'none', 3000);
-    navigator.clipboard.writeText(link.innerHTML);
+size.onchange = () => {
+    response();
+    size.checked ?
+        (
+            regular.style.color = color.LIGHT,
+            small.style.color = color.TURQUOISE
+        )
+        : (
+            regular.style.color = color.TURQUOISE,
+            small.style.color = color.LIGHT
+        );
 };
 
 
-window.addEventListener('keydown', e => {
-    if (e.key === 'Enter' || e.key === 'ArrowDown') {
-        switch (document.activeElement) {
-            case language:
-                size.focus();
-                break;
-            case size:
-                type.focus();
-                break;    
-            default:
-                language.focus();
-                break;
-        }
-    }
-
-    if (e.key === 'ArrowUp') {
-        switch (document.activeElement) {
-            case type:
-                size.focus();
-                break;
-            case size:
-                language.focus();
-                break;
-            default:
-                type.focus();
-                break;
-        }
-    }
-});
+type.onchange = () => {
+    response();
+    type.checked ?
+        (
+            rounded.style.background = color.LIGHT,
+            squared.style.background = color.TURQUOISE
+        )
+        : (
+            rounded.style.background = color.TURQUOISE,
+            squared.style.background = color.LIGHT
+        );
+};

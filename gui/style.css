@@ -1,9 +1,3 @@
-/*
- author: Josélio de S. C. Júnior <joseliojrx25@gmail.com>
- copyright: Josélio de S. C. Júnior 2021
- license: MIT
-*/
-
 @import url('https://fonts.googleapis.com/css2?family=Kanit&display=swap');
 
 :root {
@@ -11,10 +5,10 @@
     --dark2: #242424;
     --dark3: #555555;
     --light: #cacaca;
-    --blue: #5c90ff;
     --purple1: #610099;
     --purple2: #c35cff;
     --green: #66ff00;
+    --turquoise: #00ff9d;
 }
 
 ::-webkit-scrollbar { width: 10px; }
@@ -35,7 +29,7 @@
     text-decoration: none;
 }
 
-a, a:visited { color: var(--blue); }
+a, a:visited { color: var(--light); }
 
 a:hover { color: var(--purple2); }
 
@@ -90,8 +84,8 @@ footer img {
 
 .none { display: none; }
 
-.group {
-    margin: 5px 0;
+.group, .group-op {
+    margin: 15px 0;
 }
 
 .group-flex {
@@ -100,14 +94,15 @@ footer img {
     justify-content: center;
 }
 
-.label {
+.label, .label-op {
     position: absolute;
-    margin-left: 20px;
     padding: 0 5px;
-    background: var(--dark1);
     height: 18px;
+    background: var(--dark1);
     user-select: none;
 }
+
+.label { margin-left: 20px; }
 
 input[type="text"], #link, #copy {
     border: var(--light) solid 1px;
@@ -130,12 +125,16 @@ input[type="text"]::placeholder {
 }
 
 #link {
-    max-width: 300px;
-    word-wrap: break-word;
+    display: flex;
+    align-items: center;
+    max-width: 210px;
+    max-height: 35px;
+    overflow-y: scroll;
+    word-break: break-all;
     border-right: none;
     border-radius: 10px 0 0 10px;
     padding: 10px 20px;
-    font-size: 1em;
+    font-size: .8em;
 }
 
 #preview { margin: 20px; }
@@ -144,7 +143,7 @@ input[type="text"]::placeholder {
     display: none;
     position: absolute;
     top: -10;
-    right: 0;
+    right: 20;
     color: var(--green);
     opacity: 0;
     animation: confirm 3s ease-in-out 0s 1 normal;
@@ -157,22 +156,77 @@ input[type="text"]::placeholder {
 }
 
 #copy {
-    width: 50px;
+    width: 57px;
+    height: 57px;
     border-radius: 0 10px 10px 0;
     background: var(--dark2);
     cursor: pointer;
-}
-
-#copy:hover {
-    background: var(--light);
 }
 
 #copy-img {
     fill: var(--light);
 }
 
-#s404 {
-    max-width: 400px;
-    margin: 30px 0;
-    text-align: center;
+#copy:hover {
+    background: var(--turquoise);
 }
+
+#copy:hover #copy-img {
+    fill: var(--dark2);
+}
+
+.group-op {
+    position: relative;
+    border: var(--light) solid 1px;
+    border-radius: 200px;
+    padding: 15px 0 10px;
+}
+
+.label-op { top: -14; margin-left: 10px; }
+
+.sw-group { align-items: center; }
+
+.sw-box {
+    --sw-h: 30px;
+    --sw-w: 50px;
+    position: relative;
+    width: var(--sw-w);
+    height: var(--sw-h);
+    border-radius: var(--sw-h);
+    border: var(--turquoise) solid 1px;
+    margin: 0 20px;
+}
+
+.switch { display: none; }
+
+.switch + label {
+    display: block;
+    position: absolute;
+    top: 2;
+    left: 2;
+    width: calc(var(--sw-h) - 4px);
+    height: calc(var(--sw-h) - 4px);
+    border-radius: var(--sw-h);
+    background: var(--turquoise);
+    transition: all .4s;
+    cursor: pointer;
+}
+
+.switch:checked + label {
+    transform: translateX(calc(var(--sw-h) - 10px));
+}
+
+#regular, #small, #rounded, #squared { user-select: none; }
+
+#regular { color: var(--turquoise); }
+
+#rounded, #squared {
+    display: flex;
+    align-items: center;
+    height: 30px;
+    padding: 0 10px;
+    color: var(--dark2);
+}
+
+#rounded { border-radius: 30px; background: var(--turquoise); }
+#squared { border-radius: 2px; background: var(--light); }
