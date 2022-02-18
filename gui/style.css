@@ -7,6 +7,7 @@
     --light: #cacaca;
     --purple1: #610099;
     --purple2: #c35cff;
+    --blue: #5c9dff;
     --green: #66ff00;
     --turquoise: #00ff9d;
 }
@@ -29,7 +30,7 @@
     text-decoration: none;
 }
 
-a, a:visited { color: var(--light); }
+a, a:visited { color: var(--blue); }
 
 a:hover { color: var(--purple2); }
 
