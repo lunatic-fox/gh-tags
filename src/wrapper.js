@@ -17,7 +17,7 @@ const wrapper = guide => {
     const [ boxHeight, fontSize, rightPadding, pos ] = size === 'small' ? [20, 16, 14, 8] : [32, 24, 22, 12];
     const width = +(((fontSize / 2) + .1) * name.length + rightPadding).toFixed();
     const contrastColor = Kolorz.hsl(Kolorz.hexHighlight(color, .3), 'hex');
-    const radius = type === 'squared' ? 1 : 16;
+    const radius = type === 'squared' ? 1 : boxHeight / 2;
 
     const svg = text.getPath(name, {
         x: pos,
