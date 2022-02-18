@@ -12,27 +12,23 @@ const wrapper = require('./wrapper');
 const githubLiguistPromise = axios.get(`https://raw.githubusercontent.com/github/linguist/master/lib/linguist/languages.yml`);
 
 
-/**@param {string?} lang */
-const langMod = lang => {
-    if (lang) {
-        return lang
-        .replace(/\s/g, '-')
-        .replace(/\+/g, '-plus')
-        .replace(/\#/g, '-sharp')
-        .replace(/\*/g, '-asterisk')
-        .toLowerCase();
-    }
-    return null;
-};
+/**@param {string} lang */
+const langMod = lang => 
+    lang
+    .replace(/\s/g, '-')
+    .replace(/\+/g, '-plus')
+    .replace(/\#/g, '-sharp')
+    .replace(/\*/g, '-asterisk')
+    .toLowerCase();
 
 
 /**@param {{query: {lang: string?, size: 'small'?, type: 'squared'? }} req */
 const build = async req => {
+    const { lang, size, type } = req.query;
 
-    let { lang } = req.query
-    const { size, type } = req.query;
+    if (!lang) return Promise.reject();
 
-    lang = langMod(lang) || '';
+    const keyword = langMod(lang);
 
     const data = Object.entries(
         YAML.parse(await (await githubLiguistPromise).data)
@@ -45,15 +41,14 @@ const build = async req => {
         size: size,
         type: type
     }))
-    .filter(e => e.lang === lang)
+    .filter(e => e.lang === keyword)
     .pop();
 
-    if (!data) return null;
+    if (!data) return Promise.reject();
 
     delete data.lang;
 
-    return wrapper(data);
-
+    return Promise.resolve(wrapper(data));
 };
 
 module.exports = build;

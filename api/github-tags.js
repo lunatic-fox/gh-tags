@@ -4,22 +4,16 @@
  * @license MIT
  *//***/
 
-const fs = require('fs');
 const build = require('../src/build');
 
 module.exports = async (req, res) => {
-    const svg = await build(req);
-
-    if (svg) {
+    build(req)
+    .then(svg => {
         res.setHeader('Content-Type', 'image/svg+xml');
         res.end(svg);
-    } else {
+    })
+    .catch(() => {
         res.setHeader('Content-Type', 'text/html');
-        res.end(
-            fs.readFileSync(
-                require('path').join(__dirname, '../404.html')
-            )
-        );
-    }
-    
+        res.end(require('fs').readFileSync(require('path').join(__dirname, '../404.html')));
+    });
 };
