@@ -28,6 +28,7 @@
     border: none;
     outline: none;
     text-decoration: none;
+    z-index: 1;
 }
 
 a, a:visited { color: var(--blue); }
@@ -43,6 +44,14 @@ body {
     justify-content: center;
     background: var(--dark1);
     color: var(--light);
+}
+
+#dead-area {
+    z-index: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    min-height: 100%;
 }
 
 img {
@@ -127,16 +136,47 @@ footer img { height: 40px; }
     color: var(--dark3);
 }
 
+#list {
+    display: none;
+    z-index: 2;
+    position: absolute;
+    max-height: 120px;
+    overflow-y: scroll;
+    border-radius: 0 0 5px 5px;
+    border: var(--light) solid 1px;
+    border-top: none;
+    background: var(--dark2);
+}
+
+#list::-webkit-scrollbar-thumb { background: var(--dark3); }
+
+option {
+    padding: 5px;
+    text-align: center;
+    cursor: pointer;
+    user-select: none;
+    word-break: break-all;
+}
+
+option:hover {
+    color: var(--dark1);
+    background: var(--turquoise);
+}
+
+#img-p { max-width: 100%; }
+
 #link {
+    --link-max-h: 40px;
+    --link-padding: 10px;
     display: flex;
     align-items: center;
     max-width: 210px;
-    max-height: 35px;
+    max-height: var(--link-max-h);
     overflow-y: scroll;
     word-break: break-all;
     border-right: none;
     border-radius: 10px 0 0 10px;
-    padding: 10px 20px;
+    padding: var(--link-padding) 20px;
     font-size: .8em;
 }
 
@@ -154,29 +194,23 @@ footer img { height: 40px; }
 
 @keyframes confirm {
     10% { opacity: 1; }
-    90% { opacity: 1;}
-    100% { opacity: 0;}
+    90% { opacity: 1; }
+    100% { opacity: 0; }
 }
 
 #copy {
     width: 57px;
-    height: 57px;
+    height: calc(var(--link-max-h) + var(--link-padding) * 2 + 2px);
     border-radius: 0 10px 10px 0;
     background: var(--dark2);
     cursor: pointer;
 }
 
-#copy-img {
-    fill: var(--light);
-}
+#copy-img { fill: var(--light); }
 
-#copy:hover {
-    background: var(--turquoise);
-}
+#copy:hover { background: var(--turquoise); }
 
-#copy:hover #copy-img {
-    fill: var(--dark2);
-}
+#copy:hover #copy-img { fill: var(--dark2); }
 
 .group-op {
     position: relative;

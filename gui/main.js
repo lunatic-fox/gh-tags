@@ -4,8 +4,14 @@
  * @license MIT
  *//***/
 
+/**@type {HTMLDivElement}*/
+const deadArea = document.getElementById('dead-area');
+
 /**@type {HTMLInputElement}*/
 const language = document.getElementById('language');
+
+/**@type {HTMLDivElement}*/
+const list = document.getElementById('list');
 
 /**@type {HTMLDivElement}*/
 const link = document.getElementById('link');
@@ -63,8 +69,35 @@ const url = `https://gh-tags.vercel.app/api?`;
 link.textContent = url;
 
 
+const githubLiguistPromise = fetch(`https://raw.githubusercontent.com/github/linguist/master/lib/linguist/languages.yml`)
+    .then(res => res.text()
+        .then(e =>
+            e.replace(/^(#|-+|\s+).*|\n/gm, '')
+            .split(':')
+            .map(e => [format(e), e])
+        ).catch()
+    ).catch();
+
+
+list.style.width = language.clientWidth;
+const languageResetStyle = () => language.style.borderRadius = `100px`;
+const languageStyled = () => language.style.borderRadius = `20px 20px 0 0`;
+const listOn = () => {
+    list.style.width = language.clientWidth;
+    list.style.display = 'block';
+};
+const listOff = () => list.style.display = 'none';
+const clearList = () => list.innerHTML = '';
+
+[...document.getElementsByClassName('list-off'), deadArea]
+.forEach(e => e.onclick = () => {
+    languageResetStyle();
+    listOff();
+});
+
+
 /**@param {string} str*/
-const toLink = (str = '') => str
+const format = (str = '') => str
     .replace(/\s/g, '-')
     .replace(/\+/g, '-plus')
     .replace(/\*/g, '-asterisk')
@@ -74,7 +107,6 @@ const toLink = (str = '') => str
 
 /**@param {'error'?} status*/
 const copyBtn = status => {
-
     copy.onmouseover = () => {
         link.style.borderColor = status === 'error' ? color.RED : color.TURQUOISE;
         copy.style.borderColor = status === 'error' ? color.RED : color.TURQUOISE;
@@ -104,8 +136,41 @@ copy.onmouseleave = () => {
 };
 
 
-const response = () => {
-    link.textContent = `${url}${language.value ? `lang=${toLink(language.value)}` : ''}${size.checked ? '&size=small' : ''}${type.checked ? '&type=squared' : ''}`;
+const suggestResponse = async () => {
+    const keyword = () => format(language.value);
+    const data = await githubLiguistPromise;
+
+    const hotwords = data
+        .filter(e => e[0].match(new RegExp(`^${keyword()}.*`)))
+        .map(e => `<option>${e[1]}</option>`)
+        .join('');
+    
+    list.innerHTML = hotwords;
+
+    if (keyword() && hotwords.length > 0) {
+
+        list.innerHTML ? (languageStyled(), listOn()) : languageResetStyle();
+
+        [...document.getElementsByTagName('option')]
+        .forEach(elem => 
+            elem.onclick = () => {
+                language.value = elem.textContent;
+                listOff();
+                languageResetStyle();
+                previewResponse();
+            }
+        );
+
+    } else {
+        languageResetStyle();
+        clearList();
+        listOff();
+    }
+};
+
+
+const previewResponse = () => {
+    link.textContent = `${url}${language.value ? `lang=${format(language.value)}` : ''}${size.checked ? '&size=small' : ''}${type.checked ? '&type=squared' : ''}`;
 
     if (link.textContent === url) {
         copyBtn();
@@ -137,11 +202,12 @@ const response = () => {
 };
 
 
-language.onchange = response;
+language.onfocus = () => list.innerHTML && (languageStyled(), listOn());
+language.oninput = () => (suggestResponse(), previewResponse());
 
 
 size.onchange = () => {
-    response();
+    previewResponse();
     size.checked ?
         (
             regular.style.color = color.LIGHT,
@@ -155,7 +221,7 @@ size.onchange = () => {
 
 
 type.onchange = () => {
-    response();
+    previewResponse();
     type.checked ?
         (
             rounded.style.background = color.LIGHT,
