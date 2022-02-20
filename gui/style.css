@@ -46,14 +46,6 @@ body {
     color: var(--light);
 }
 
-#dead-area {
-    z-index: 0;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    min-height: 100%;
-}
-
 img {
     -webkit-user-drag: none;
     user-select: none;

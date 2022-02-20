@@ -71,10 +71,7 @@ link.textContent = url;
 
 const githubLiguistPromise = fetch(`https://raw.githubusercontent.com/github/linguist/master/lib/linguist/languages.yml`)
     .then(res => res.text()
-        .then(e =>
-            e.replace(/^(#|-+|\s+).*|\n/gm, '')
-            .split(':')
-            .map(e => [format(e), e])
+        .then(e => e.replace(/^(#|-+|\s+).*|\n/gm, '').split(':').map(e => [format(e), e])
         ).catch()
     ).catch();
 
@@ -89,11 +86,17 @@ const listOn = () => {
 const listOff = () => list.style.display = 'none';
 const clearList = () => list.innerHTML = '';
 
-[...document.getElementsByClassName('list-off'), deadArea]
-.forEach(e => e.onclick = () => {
-    languageResetStyle();
-    listOff();
-});
+
+document.onclick = ev => {
+    const isClicked = [list, language]
+        .map(elem => elem.contains(ev.target))
+        .some(e => e);
+
+    if (!isClicked) {
+        languageResetStyle();
+        listOff();
+    }
+};
 
 
 /**@param {string} str*/
@@ -144,7 +147,7 @@ const suggestResponse = async () => {
         .filter(e => e[0].match(new RegExp(`^${keyword()}.*`)))
         .map(e => `<option>${e[1]}</option>`)
         .join('');
-    
+
     list.innerHTML = hotwords;
 
     if (keyword() && hotwords.length > 0) {
@@ -152,14 +155,14 @@ const suggestResponse = async () => {
         list.innerHTML ? (languageStyled(), listOn()) : languageResetStyle();
 
         [...document.getElementsByTagName('option')]
-        .forEach(elem => 
-            elem.onclick = () => {
-                language.value = elem.textContent;
-                listOff();
-                languageResetStyle();
-                previewResponse();
-            }
-        );
+            .forEach(elem =>
+                elem.onclick = () => {
+                    language.value = elem.textContent;
+                    listOff();
+                    languageResetStyle();
+                    previewResponse();
+                }
+            );
 
     } else {
         languageResetStyle();
@@ -182,11 +185,11 @@ const previewResponse = () => {
 
         previewBox.className = 'group-flex';
         preview.removeAttribute('class');
-        
+
         imgP.removeAttribute('class');
         imgP.src = link.textContent;
         imgR.style.display = 'none';
-        
+
         imgP.onload = () => {
             copyBtn();
             link.style.color = color.GREEN;
