@@ -112,8 +112,9 @@ const format = (str = '') => str
 const copyBtn = status => {
     copy.onmouseover = () => {
         link.style.borderColor = status === 'error' ? color.RED : color.TURQUOISE;
-        copy.style.borderColor = status === 'error' ? color.RED : color.TURQUOISE;
-        copy.style.background = status === 'error' ? color.RED : color.TURQUOISE;
+        copy.style.cssText = status === 'error' ?
+            `border-color:${color.RED}; background:${color.RED};`
+            : `border-color:${color.TURQUOISE}; background:${color.TURQUOISE};`;
         copyImg.style.fill = color.DARK2;
     };
 
