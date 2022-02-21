@@ -4,9 +4,6 @@
  * @license MIT
  *//***/
 
-/**@type {HTMLDivElement}*/
-const deadArea = document.getElementById('dead-area');
-
 /**@type {HTMLInputElement}*/
 const language = document.getElementById('language');
 
