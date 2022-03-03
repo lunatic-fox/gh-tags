@@ -34,17 +34,17 @@ const rgx = {
     validateHSLA(code) { return `${code}`.match(this.HSLA) && true; },
 
     /** @param {string} code */
-    validateRGBA(code) { return `${code}`.match(this.RGBA) && true; },
+    validateRGBA(code) { return `${code}`.match(this.RGBA) && true; }
 
 };
-
 
 /** @param {string} code */
 function HEXtoRGB(code, alpha, self) {
     let codeInit = [...code.replace('#', '')];
 
     codeInit = codeInit.length === 3 || codeInit.length === 4 ?
-        codeInit.map(e => e.repeat(2)).join('').split('') : codeInit;
+        codeInit.map(e => e.repeat(2)).join('').split('')
+        : codeInit;
 
     code = Array.from(Array(3), () => codeInit.splice(0, 2).join(''));
 
@@ -140,11 +140,11 @@ function HEXtoHSL(code, alpha) {
     return code;
 }
 
-
 /**@param {string|[]} colorModel */
 function kolorz(colorModel) {
 
-    if (!colorModel) return;
+    if (!colorModel)
+        return;
 
     return class {
         static #code = colorModel.replace(/\s/g, '');
@@ -158,7 +158,6 @@ function kolorz(colorModel) {
                 return this.#arrKey ? HSLtoRGB(this.#code) : `rgb(${HSLtoRGB(this.#code)})`;
             if (rgx.validateRGB(this.#code))
                 return this.#arrKey ? rgx.unpackRGBA(this.#code) : this.#code;
-            return;
         }
 
         /** Converts the color model to a RGBA string. */
@@ -169,7 +168,6 @@ function kolorz(colorModel) {
                 return this.#arrKey ? HSLtoRGB(this.#code, true) : `rgba(${HSLtoRGB(this.#code, true)})`;
             if (rgx.validateRGBA(this.#code))
                 return this.#arrKey ? rgx.unpackRGBA(this.#code) : this.#code;
-            return;
         }
 
         /** Converts the color model to a HEX string. */
@@ -180,7 +178,6 @@ function kolorz(colorModel) {
                 return this.#arrKey ? HSLtoHEX(this.#code) : `#${HSLtoHEX(this.#code).join('')}`.toUpperCase();
             if (rgx.validateHEX(this.#code))
                 return this.#arrKey ? HEXtoRGB(this.#code, null, true) : `#${this.#code.replace(/#/g, '')}`.toUpperCase();
-            return;
         }
 
         /** Converts the color model to a HEXA string. */
@@ -191,7 +188,6 @@ function kolorz(colorModel) {
                 return this.#arrKey ? HSLtoHEX(this.#code, true) : `#${HSLtoHEX(this.#code, true).join('')}`.toUpperCase();
             if (rgx.validateHEXA(this.#code))
                 return this.#arrKey ? HEXtoRGB(this.#code, true, true) : `#${this.#code.replace(/#/g, '')}`.toUpperCase();
-            return;
         }
 
         /** Converts the color model to a HSL string. */
@@ -203,7 +199,6 @@ function kolorz(colorModel) {
                 return this.#arrKey ? RGBtoHSL(this.#code) : mount(RGBtoHSL(this.#code));
             if (rgx.validateHSL(this.#code))
                 return this.#arrKey ? rgx.unpackHSLA(this.#code) : this.#code;
-            return;
         }
 
         /** Converts the color model to a HSLA string. */
@@ -215,9 +210,7 @@ function kolorz(colorModel) {
                 return this.#arrKey ? RGBtoHSL(this.#code, true) : mount(RGBtoHSL(this.#code, true));
             if (rgx.validateHSLA(this.#code))
                 return this.#arrKey ? rgx.unpackHSLA(this.#code) : this.#code;
-            return;
         }
-
 
         static get contrast() {
             let c = this.toHSL || this.toHSLA;
@@ -237,7 +230,6 @@ function kolorz(colorModel) {
             this.#arrKey = true;
             return this;
         }
-
     };
 
 }
