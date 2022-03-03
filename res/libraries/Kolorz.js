@@ -8,235 +8,238 @@
  *//***/
 
 const rgx = {
-    validHex: /^#*[a-f_A-F_0-9]{3,6}$/g,
-    validRgb: /^(rgb\((\d+,){2}\d+\)|\((\d+,){2}\d+\)|(\d+,){2}\d+)$/g,
-    validHsl: /^(hsl\(\d+,\d+%*,\d+%*\)|\(\d+,\d+%*,\d+%*\)|\d+,\d+%*,\d+%*)$/g,
-    hex: /[# ]/g,
-    rgb: /[rgb( )]/g,
-    hsl: /[hsl( )%]/g,
-    space: /[ ]/g
+    HEX: /^#{0,1}([a-fA-F0-9]{3}|[a-fA-F0-9]{6})$/,
+    HEXA: /^#{0,1}([a-fA-F0-9]{4}|[a-fA-F0-9]{8})$/,
+    RGB: /^((rgb){0,1}\(){0,1}((2([0-4]\d|5[0-5])|1\d{2}|[1-9]\d|\d),){2}(2([0-4]\d|5[0-5])|1\d{2}|[1-9]\d|\d)\){0,1}$/,
+    RGBA: /^((rgba){0,1}\(){0,1}((2([0-4]\d|5[0-5])|1\d{2}|[1-9]\d|\d),){2}(2([0-4]\d|5[0-5])|1\d{2}|[1-9]\d|\d),([01]|[01]{0,1}\.\d{0,3})\){0,1}$/,
+    HSL: /^((hsl){0,1}\(){0,1}(360|3[0-5]\d|[12]\d{2}|[1-9]\d|\d)°{0,1},(100|[1-9]\d|\d)%{0,1},(100|[1-9]\d|\d)%{0,1}\){0,1}$/,
+    HSLA: /^((hsla){0,1}\(){0,1}(360|3[0-5]\d|[12]\d{2}|[1-9]\d|\d)°{0,1},(100|[1-9]\d|\d)%{0,1},(100|[1-9]\d|\d)%{0,1},([01]|[01]{0,1}\.\d{0,3})\){0,1}$/,
+
+    unpackRGBA: e => `${e}`.replace(/[rgba()]/g, '').split(',').map(e => +e),
+    unpackHSLA: e => `${e}`.replace(/[hsla()°%]/g, '').split(',').map(e => +e),
+
+    /** @param {string} code */
+    validateHEX(code) { return `${code}`.match(this.HEX) && true; },
+
+    /** @param {string} code */
+    validateHSL(code) { return `${code}`.match(this.HSL) && true; },
+
+    /** @param {string} code */
+    validateRGB(code) { return `${code}`.match(this.RGB) && true; },
+
+    /** @param {string} code */
+    validateHEXA(code) { return `${code}`.match(this.HEXA) && true; },
+
+    /** @param {string} code */
+    validateHSLA(code) { return `${code}`.match(this.HSLA) && true; },
+
+    /** @param {string} code */
+    validateRGBA(code) { return `${code}`.match(this.RGBA) && true; },
+
 };
 
-function HEXtoRGB(str) {
 
-    // Default response.
-    const def = 'rgb(0, 0, 0)';
+/** @param {string} code */
+function HEXtoRGB(code, alpha, self) {
+    let codeInit = [...code.replace('#', '')];
 
-    // If it is not a hex pattern returns default value.
-    if (typeof str !== 'string' || !str.replace(rgx.space, '').match(rgx.validHex))
-        return def;
+    codeInit = codeInit.length === 3 || codeInit.length === 4 ?
+        codeInit.map(e => e.repeat(2)).join('').split('') : codeInit;
 
-    // Parses to decimal base.
-    const conv = (x) => x.map(x => parseInt(x, 16)).join(', '),
+    code = Array.from(Array(3), () => codeInit.splice(0, 2).join(''));
 
-        // Replace all spaces and hash symbol.
-        v = str.replace(rgx.hex, '');
+    if (self)
+        return alpha ? [...code, codeInit.join('')] : code;
 
-    // If true returns the rgb value, otherwise go ahead.
-    if (v.length === 3)
-        return `rgb(${conv(v.split('').map(x => x.repeat(2)))})`;
+    const alphaREG = +(parseInt(codeInit.join(''), 16) / 255).toFixed(3);
 
-    // This region only works if the last condition is false.
-    const arr = [];
-    for (let i = 0; i < v.length; i += 2) {
-        arr.push(v.slice(i, i + 2));
-    }
+    code = code.map(e => parseInt(e, 16));
 
-    // If true returns the rgb value, otherwise go ahead.
-    if (v.length === 6)
-        return `rgb(${conv(arr)})`;
-
-    // If all previous conditions are false returns the default response.
-    return def;
+    return alpha ? [...code, alphaREG] : code;
 }
 
-function RGBtoHEX(str) {
+/** @param {string} code */
+function HSLtoRGB(code, alpha) {
+    code = rgx.unpackHSLA(code);
 
-    // Default response.
-    const def = '#000000';
+    alpha = code[3];
 
-    // If it is not a rgb pattern returns default value.
-    if (typeof str !== 'string')
-        return def;
+    const [H, S, L] = [code[0], code[1] / 100, code[2] / 100];
+    const Z = (1 - Math.abs(2 * L - 1)) * S;
+    const X = Z * (1 - Math.abs((H / 60) % 2 - 1));
+    const M = L - Z / 2;
 
-    if (str.replace(rgx.space, '').match(rgx.validRgb)) {
-        const v = str.replace(rgx.rgb, '').split(','),
+    code = (H >= 0 && H < 60 ? [Z, X, 0]
+        : H >= 60 && H < 120 ? [X, Z, 0]
+        : H >= 120 && H < 180 ? [0, Z, X]
+        : H >= 180 && H < 240 ? [0, X, Z]
+        : H >= 240 && H < 300 ? [X, 0, Z]
+        : [Z, 0, X])
+        .map(e => +((e + M) * 255).toFixed());
 
-            // Parses to hexadecimal base.
-            conv = (x) => x.map(x => +x <= 0 ? '00'
-                : +x < 16 ? `0${(+x).toString(16)}`
-                    : +x > 255 ? 'ff'
-                        : (+x).toString(16)).join('');
-
-        // If true returns the hex value, otherwise go ahead.
-        if (v.length === 3)
-            return `#${conv(v)}`;
-    }
-
-    // If all previous conditions are false returns the default response.
-    return def;
+    return alpha ? [...code, alpha] : code;
 }
 
-function HEXtoHSL(str) {
+/** @param {number} e */
+const numToHEX = e => e <= 0 ? '00' : e < 16 ? `0${e.toString(16)}` : e >= 255 ? 'ff' : e.toString(16);
 
-    // Default response.
-    const def = 'hsl(0, 0%, 0%)';
+/** @param {string} code */
+function RGBtoHEX(code, alpha) {
+    code = rgx.unpackRGBA(code);
 
-    // If it is not a hex pattern returns default value.
-    if (typeof str !== 'string' || !str.replace(rgx.space, '').match(rgx.validHex))
-        return def;
+    const alphaHEX = numToHEX(+(code[3] * 255).toFixed());
 
-    const v = HEXtoRGB(str)
-        .replace(rgx.rgb, '')
-        .split(',')
-        .map(x => +x)
-        .join(',');
-    return RGBtoHSL(v);
+    code = code
+        .slice(0, 3)
+        .map(e => numToHEX(e))
+
+    return alpha ? [...code, alphaHEX] : code;
 }
 
-function RGBtoHSL(str) {
+/** @param {string} code */
+function HSLtoHEX(code, alpha) {
+    code = rgx.unpackHSLA(code);
 
-    // Default response.
-    const def = 'hsl(0, 0%, 0%)';
+    const alphaHEX = numToHEX(+(code[3] * 255).toFixed());
 
-    // If it is not a hex pattern returns default value.
-    if (typeof str !== 'string' || !str.replace(rgx.space, '').match(rgx.validRgb))
-        return def;
+    code = RGBtoHEX(`${HSLtoRGB(`${code.slice(0, 3)}`)}`);
 
-    const v = str
-        .replace(rgx.rgb, '')
-        .split(',')
-        .map(x => +x < 0 ? 0 : +x > 255 ? 255 : x), c = v.slice(0, 3)
-            .map(x => +x / 255),
-
-        cmax = Math.max(...c),
-        cmin = Math.min(...c), d = cmax - cmin,
-
-        h = d === 0 ? 0
-            : cmax == c[0] ? 60 * (((c[1] - c[2]) / d) % 6)
-                : cmax == c[1] ? 60 * (((c[2] - c[0]) / d) + 2)
-                    : 60 * (((c[0] - c[1]) / d) + 4),
-
-        H = h < 0 ? 360 + h : h,
-        L = (cmax + cmin) / 2,
-        S = d === 0 ? 0 : d / (1 - Math.abs(2 * L - 1)),
-
-        hsl = [H.toFixed(), `${(S * 100).toFixed()}%`, `${(L * 100).toFixed()
-            }%`].join(', ');
-
-    // If true returns the hsl value, otherwise go ahead.
-    if (v.length === 3)
-        return `hsl(${hsl})`;
-
-    // If all previous conditions are false returns the default response.
-    return def;
+    return alpha ? [...code, alphaHEX] : code;
 }
 
-function HSLtoRGB(str) {
+/** @param {string} code */
+function RGBtoHSL(code, alpha) {
+    code = rgx.unpackRGBA(code);
 
-    // Default response.
-    const def = 'rgb(0, 0, 0)';
+    alpha = code[3];
 
-    // If it is not a hsl pattern returns default value.
-    if (typeof str !== 'string')
-        return def;
-    if (str.replace(rgx.space, '')
-        .match(rgx.validHsl)) {
-        const v = str
-            .replace(rgx.hsl, '')
-            .split(',')
-            .map(x => +x);
-        if (v.slice(1, 3).some(x => x > 100))
-            return def;
-        v[0] = v[0] > 360 ? 360 : v[0];
-        const H = v[0],
-            S = v[1] / 100,
-            L = v[2] / 100,
-            Z = (1 - Math.abs(2 * L - 1)) * S,
-            X = Z * (1 - Math.abs((H / 60) % 2 - 1)),
-            m = L - Z / 2, rgb = (H >= 0 && H < 60 ? [Z, X, 0]
-            : H >= 60 && H < 120 ? [X, Z, 0]
-                : H >= 120 && H < 180 ? [0, Z, X]
-                    : H >= 180 && H < 240 ? [0, X, Z]
-                        : H >= 240 && H < 300 ? [X, 0, Z]
-                            : [Z, 0, X])
-            .map(x => ((x + m) * 255).toFixed())
-            .join(', ');
+    code = code.map(e => e / 255)
+        .slice(0, 3);
 
-        // If true returns the hsl value, otherwise go ahead.
-        if (v.length === 3)
-            return `rgb(${rgb})`;
-    }
+    const cMax = Math.max(...code);
+    const cMin = Math.min(...code);
+    const d = cMax - cMin;
+    const h = d === 0 ? 0
+    : cMax === code[0] ? 60 * (((code[1] - code[2]) / d) % 6)
+    : cMax === code[1] ? 60 * (((code[2] - code[0]) / d) + 2)
+    : 60 * (((code[0] - code[1]) / d) + 4);
 
-    // If all previous conditions are false returns the default response.
-    return def;
+    const H = h < 0 ? 360 + h : h;
+    const L = (cMax + cMin) / 2;
+    const S = d === 0 ? 0 : d / (1 - Math.abs(2 * L - 1));
+
+    code = [+H.toFixed(), +(S * 100).toFixed(), +(L * 100).toFixed()];
+
+    return alpha ? [...code, alpha] : code;
 }
 
-function HSLtoHEX(str) {
-    return RGBtoHEX(HSLtoRGB(str));
+/** @param {string} code */
+function HEXtoHSL(code, alpha) {
+    code = HEXtoRGB(code, alpha);
+    code = RGBtoHSL(`${code}`, alpha);
+    return code;
 }
 
-/**
- * Color conversion and more.
- */
-class Kolorz {
-    /**
-     * Converts an HEX color system code into another color system code.
-     * @param {string?} string A string with the color system code to convert into another one.
-     * @param {'hsl'|'rgb'|null} system The color system to convert. If this is null, returns transparent HEXA color by default.
-     */
-    static hex(string, system) {
-        return system === 'hsl' ? HEXtoHSL(string)
-            : system === 'rgb' ? HEXtoRGB(string)
-                : '#000000';
-    }
 
-    /**
-     * Converts an RGB color system code into another color system code.
-     * @param {string?} string A string with the color system code to convert into another one.
-     * @param {'hsl'|'hex'|null} system The color system to convert. If this is null, returns transparent RGBA color by default.
-     */
-    static rgb(string, system) {
-        return system === 'hsl' ? RGBtoHSL(string)
-            : system === 'hex' ? RGBtoHEX(string)
-                : 'rgb(0, 0, 0)';
-    }
-    /**
-     * Converts an HSL color system code into another color system code.
-     * @param {string?} string A string with the color system code to convert into another one.
-     * @param {'hex'|'rgb'|null} system The color system to convert. If this is null, returns transparent HSLA color by default.
-     */
-    static hsl(string, system) {
-        return system === 'rgb' ? HSLtoRGB(string)
-            : system === 'hex' ? HSLtoHEX(string)
-                : 'hsl(0, 0%, 0%)';
-    }
+/**@param {string|[]} colorModel */
+function kolorz(colorModel) {
 
-    /**
-     * Converts an HEX color system into HSL system adjusting the lightness.
-     * @param {string} color A string with HEX system color to convert.
-     * @param {number?} lightness A number from 0 to 1 that represent the amount, in percentage, of lightness to add or remove from the color. If this is null, it will be set as 0 by default.
-     */
-    static hexHighlight(color, lightness = 0) {
+    if (!colorModel) return;
 
-        if (typeof color !== 'string' && typeof lightness !== 'number')
-            return 'hsl(0, 0%, 0%)';
+    return class {
+        static #code = colorModel.replace(/\s/g, '');
+        static #arrKey;
 
-        const c = this.hex(color, 'hsl')
-            .replace(/[hsl( )%]/g, '')
-            .split(',')
-            .map(e => +e);
-            
-        const l = +(lightness * 100).toFixed();
-        return `hsl(${
-            c.slice(0, 2)}%,${
-            c[2] === 100 ? 0
-            : c[2] >= 90 ? c[2] - (l + 30) 
-            : c[2] >= 65 ? c[2] - (l + 10)
-            : c[2] >= 35 ? c[2] - l
-            : c[2] + l
-        }%)`;
-    }
+        /** Converts the color model to a RGB string. */
+        static get toRGB() {
+            if (rgx.validateHEX(this.#code))
+                return this.#arrKey ? HEXtoRGB(this.#code) : `rgb(${HEXtoRGB(this.#code)})`;
+            if (rgx.validateHSL(this.#code))
+                return this.#arrKey ? HSLtoRGB(this.#code) : `rgb(${HSLtoRGB(this.#code)})`;
+            if (rgx.validateRGB(this.#code))
+                return this.#arrKey ? rgx.unpackRGBA(this.#code) : this.#code;
+            return;
+        }
+
+        /** Converts the color model to a RGBA string. */
+        static get toRGBA() {
+            if (rgx.validateHEXA(this.#code))
+                return this.#arrKey ? HEXtoRGB(this.#code, true) : `rgba(${HEXtoRGB(this.#code, true)})`;
+            if (rgx.validateHSLA(this.#code))
+                return this.#arrKey ? HSLtoRGB(this.#code, true) : `rgba(${HSLtoRGB(this.#code, true)})`;
+            if (rgx.validateRGBA(this.#code))
+                return this.#arrKey ? rgx.unpackRGBA(this.#code) : this.#code;
+            return;
+        }
+
+        /** Converts the color model to a HEX string. */
+        static get toHEX() {
+            if (rgx.validateRGB(this.#code))
+                return this.#arrKey ? RGBtoHEX(this.#code) : `#${RGBtoHEX(this.#code).join('')}`.toUpperCase();
+            if (rgx.validateHSL(this.#code))
+                return this.#arrKey ? HSLtoHEX(this.#code) : `#${HSLtoHEX(this.#code).join('')}`.toUpperCase();
+            if (rgx.validateHEX(this.#code))
+                return this.#arrKey ? HEXtoRGB(this.#code, null, true) : `#${this.#code.replace(/#/g, '')}`.toUpperCase();
+            return;
+        }
+
+        /** Converts the color model to a HEXA string. */
+        static get toHEXA() {
+            if (rgx.validateRGBA(this.#code))
+                return this.#arrKey ? RGBtoHEX(this.#code, true) : `#${RGBtoHEX(this.#code, true).join('')}`.toUpperCase();
+            if (rgx.validateHSLA(this.#code))
+                return this.#arrKey ? HSLtoHEX(this.#code, true) : `#${HSLtoHEX(this.#code, true).join('')}`.toUpperCase();
+            if (rgx.validateHEXA(this.#code))
+                return this.#arrKey ? HEXtoRGB(this.#code, true, true) : `#${this.#code.replace(/#/g, '')}`.toUpperCase();
+            return;
+        }
+
+        /** Converts the color model to a HSL string. */
+        static get toHSL() {
+            const mount = e => `hsl(${e[0]}°,${e[1]}%,${e[2]}%)`;
+            if (rgx.validateHEX(this.#code))
+                return this.#arrKey ? HEXtoHSL(this.#code) : mount(HEXtoHSL(this.#code));
+            if (rgx.validateRGB(this.#code))
+                return this.#arrKey ? RGBtoHSL(this.#code) : mount(RGBtoHSL(this.#code));
+            if (rgx.validateHSL(this.#code))
+                return this.#arrKey ? rgx.unpackHSLA(this.#code) : this.#code;
+            return;
+        }
+
+        /** Converts the color model to a HSLA string. */
+        static get toHSLA() {
+            const mount = e => `hsla(${e[0]}°,${e[1]}%,${e[2]}%,${e[3]})`;
+            if (rgx.validateHEXA(this.#code))
+                return this.#arrKey ? HEXtoHSL(this.#code, true) : mount(HEXtoHSL(this.#code, true));
+            if (rgx.validateRGBA(this.#code))
+                return this.#arrKey ? RGBtoHSL(this.#code, true) : mount(RGBtoHSL(this.#code, true));
+            if (rgx.validateHSLA(this.#code))
+                return this.#arrKey ? rgx.unpackHSLA(this.#code) : this.#code;
+            return;
+        }
+
+
+        static get contrast() {
+            let c = this.toHSL || this.toHSLA;
+            c = rgx.unpackHSLA(c);
+
+            c[2] = c[2] === 100 ? 0
+            : c[2] >= 90 ? c[2] - 60
+            : c[2] >= 65 ? c[2] - 40
+            : c[2] >= 35 ? c[2] - 30
+            : c[2] + 30;
+
+            this.#code = c.length === 3 ? `hsl(${c})` : `hsla(${c})`;
+            return this;
+        }
+
+        static get asArray() {
+            this.#arrKey = true;
+            return this;
+        }
+
+    };
+
 }
 
-module.exports = Kolorz;
+module.exports = kolorz;

@@ -5,7 +5,7 @@
  *//***/
 
 const TextToSVG = require('text-to-svg');
-const kolorz = require('../res/libraries/kolorz');
+const Kolorz = require('../res/libraries/Kolorz');
 
 
 const text = TextToSVG.loadSync(require('path').join(__dirname, '../res/fonts/UbuntuMono-Bold.ttf'));
@@ -16,7 +16,7 @@ const wrapper = guide => {
     const { name, color, transparent, size, type } = guide;
     const [ boxHeight, fontSize, rightPadding, pos ] = size === 'small' ? [20, 16, 14, 8] : [32, 24, 22, 12];
     const width = +(((fontSize / 2) + .1) * name.length + rightPadding).toFixed();
-    const contrastColor = kolorz(color).contrast.toHEX;
+    const contrastColor = Kolorz.hsl(Kolorz.hexHighlight(color, .3), 'hex');
     const radius = type === 'squared' ? 1 : boxHeight / 2;
 
     const svg = text.getPath(name, {
