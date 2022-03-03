@@ -8,7 +8,7 @@
 **Se você ❤ este projeto e quer me apoiar, por favor considere fazer uma [doação](../donation/README.md).**
     
 <a href="./docs/donation/README.md">
-<img src="../donation/src/jar.png" width="120">
+<img src="../donation/src/jar-pt-br.png" width="120">
 </a>
   
 </div>
