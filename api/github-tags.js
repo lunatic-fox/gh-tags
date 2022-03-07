@@ -4,7 +4,7 @@
  * @license MIT
  *//***/
 
-const build = require('../src/build');
+const build = require('../src/build').build;
 
 module.exports = async (req, res) => {
     build(req)

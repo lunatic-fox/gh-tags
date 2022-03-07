@@ -22,7 +22,33 @@ const langMod = lang =>
     .toLowerCase();
 
 
-/**@param {{query: {lang: string?, size: 'small'?, type: 'squared'? }} req */
+/** @param {{query: {lang: string}}} req */
+const buildObject = async req => {
+    const { lang } = req.query;
+    
+    if (!lang) return Promise.reject();
+
+    const keyword = langMod(lang);
+
+    const data = Object.entries(
+        YAML.parse(await (await githubLiguistPromise).data)
+    )
+        .map(([k, v]) => ({
+            lang: langMod(k),
+            name: k,
+            /** @type {string} */
+            color: v.color || 'none'
+        }))
+        .filter(e => e.lang === keyword)
+        .pop();
+
+    if (!data) return Promise.reject();
+
+    return Promise.resolve(data);
+};
+
+
+/** @param {{query: {lang: string, size: 'small'?, type: 'squared'? }} req */
 const build = async req => {
     const { lang, size, type } = req.query;
 
@@ -51,4 +77,4 @@ const build = async req => {
     return Promise.resolve(wrapper(data));
 };
 
-module.exports = build;
+module.exports = { build, buildObject };

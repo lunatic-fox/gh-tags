@@ -19,16 +19,22 @@
   
 </div>
 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [🔸 GitHub Tags API](#how-main)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [🔸 GitHub Colors API](#how-use)<br>
 
 ## Summary
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [🔹 How to use](#how)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [🔹 Language name special symbols](#lang)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [🔹 Customization](#cust)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [🔹 Non colored languages](#non)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [🔹 Libraries](#lib)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [🔸 GitHub Tags API](#how-main)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [🔹 How to use](#how)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [🔹 Language name special symbols](#lang)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [🔹 Customization](#cust)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [🔹 Non colored languages](#non)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [🔸 GitHub Colors API](#how-use)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [🔹 How to use](#how-h-use)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [🔸 Libraries](#lib)<br>
 
 
-<h2 name="how">How to use</h2>
+<h1 name="how-main">🔸 GitHub Tags API</h1>
+<h2 name="how">🔹 How to use</h2>
 
 &nbsp;&nbsp;&nbsp;&nbsp;Use the ***[GitHub Tags GUI](https://gh-tags.vercel.app/)*** to generate your link or copy and paste the template URL below:
 
@@ -58,7 +64,7 @@ Let's see some examples:
 
 <br>
 
-<h2 name="lang">Language name special symbols</h2>
+<h2 name="lang">🔹 Language name special symbols</h2>
 
 &nbsp;&nbsp;&nbsp;&nbsp;Some language names have `space`, `+`, `#` or `*`. In those cases they are replaced by those symbols:
 
@@ -82,7 +88,7 @@ Let's see some examples:
 
 <br>
 
-<h2 name="cust">Customization</h2>
+<h2 name="cust">🔹 Customization</h2>
 
 &nbsp;&nbsp;&nbsp;&nbsp;There are some options to the output tag listed here:
 - `size=small` - This is the small version of tag. (height: 20px) - Default height: 32px.
@@ -114,7 +120,7 @@ Let's see some examples:
 
 <br>
 
-<h2 name="non">Non colored languages</h2>
+<h2 name="non">🔹 Non colored languages</h2>
 
 &nbsp;&nbsp;&nbsp;&nbsp;There are some languages without a specific color and they will be presented that way.
 
@@ -123,11 +129,50 @@ Let's see some examples:
 ![](https://gh-tags.vercel.app/api?lang=cobol) ![](https://gh-tags.vercel.app/api?lang=robots.txt&type=squared) ![](https://gh-tags.vercel.app/api?lang=asl&size=small) ![](https://gh-tags.vercel.app/api?lang=limbo&size=small&type=squared)
   
 </div>
+<br>
 
+<h1 name="how-use">🔸 GitHub Colors API</h1>
+<h2 name="how-h-use">🔹 How to use</h2>
+
+&nbsp;&nbsp;&nbsp;&nbsp;Use this template URL below:
+~~~
+https://gh-tags.vercel.app/use?lang=[LANGUAGE NAME]
+~~~
+&nbsp;&nbsp;&nbsp;&nbsp;Then replace the value of `lang=[LANGUAGE NAME]` to any language known by Github.
+
+<div align="center">
+
+### **⚠**
+### **Differently from GitHub Tags API this API route returns only JSON objects!**
+
+<br>
+</div>
+
+***[📃 Reference list of all languages known by Github](./docs/list/README.md)***
+
+Let's see some examples:
+
+***Ada***
+~~~
+https://gh-tags.vercel.app/use?lang=ada
+~~~
+***returns:***
+~~~json
+{"lang":"ada","name":"Ada","color":"#02f88c"}
+~~~
+---
+***Json***
+~~~
+https://gh-tags.vercel.app/use?lang=json
+~~~
+***returns:***
+~~~json
+{"lang":"json","name":"JSON","color":"#292929"}
+~~~
 
 <br>
 
-<h2 name="lib">Libraries</h2>
+<h1 name="lib">🔸 Libraries</h1>
 
 &nbsp;&nbsp;&nbsp;&nbsp;Look those amazing libraries used in this project!
 
