@@ -1,9 +1,6 @@
 /**
  * @author Josélio de S. C. Júnior <joseliojrx25@gmail.com>
  * @copyright Josélio de S. C. Júnior 2021
- * 
- * This is a extension from this project in TypeScript:
- * @link https://github.com/joseliojunior/utils/blob/main/typescript/Kolorz.ts
  * @license MIT
  *//***/
 
