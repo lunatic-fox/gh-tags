@@ -1,0 +1,22 @@
+{
+    "routes": [
+        {
+            "src": "/use",
+            "methods": [ "GET" ],
+            "dest": "/api/use/index.js"
+        },
+        {
+            "src": "/api[^?].*",
+            "dest": "/404.html"
+        },
+        {
+            "src": "/",
+            "dest": "/gui/index.html"
+        },
+        {
+            "src": "/api",
+            "methods": [ "GET" ],
+            "dest": "/api/github-tags.js"
+        }
+    ]
+}

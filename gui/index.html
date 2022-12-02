@@ -1,0 +1,115 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="GitHub Tags">
+    <meta name="keywords" content="javascript, nodejs, serveless, function, api, vercel">
+    <meta name="author" content="Josélio de S. C. Júnior">
+    <meta property="og:title" content="GitHub Tags" />
+    <meta property="og:type" content="website" />
+    <meta property="og:description" content="Wanna a language name tag with the colors known by GitHub? This is the API for it!" />
+    <meta property="og:image"content="https://gh-tags.vercel.app/gui/img/logo.png" />
+    <meta property="og:url" content="https://gh-tags.vercel.app/" />
+    <meta property="og:site_name" content="GitHub Tags GUI" />
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:url" content="https://gh-tags.vercel.app/">
+    <meta name="twitter:title" content="GitHub Tags">
+    <meta name="twitter:description" content="Wanna a language name tag with the colors known by GitHub? This is the API for it!">
+    <meta name="twitter:image"content="https://gh-tags.vercel.app/gui/img/logo.png">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./gui/style.css">
+    <link rel="shortcut icon" href="./gui/img/icon.png" type="image/x-icon">
+    <title>GitHub Tags GUI</title>
+</head>
+
+<body>
+
+    <img src="./gui/img/logo.png" width="100px">
+    <header>GitHub Tags GUI</header>
+
+    <section>
+        <div class="group">
+            <div class="label">Language</div>
+            <input type="text" id="language" autocomplete="off" spellcheck="false" placeholder="e.g.: JavaScript">
+            <div id="list"></div>
+        </div>
+
+        <div>
+            <h3>Optional</h3>
+            <div class="group-op">
+                <div class="label-op">Size</div>
+                <div class="group-flex sw-group">
+                    <div id="regular">regular</div>
+                    <div class="sw-box">
+                        <input id="size" type="checkbox" class="switch">
+                        <label for="size"></label>
+                    </div>
+                    <div id="small">small</div>
+                </div>
+            </div>
+
+            <div class="group-op">
+                <div class="label-op">Type</div>
+                <div class="group-flex sw-group">
+                    <div id="rounded">rounded</div>
+                    <div class="sw-box">
+                        <input id="type" type="checkbox" class="switch">
+                        <label for="type"></label>
+                    </div>
+                    <div id="squared">squared</div>
+                </div>
+            </div>
+
+            <h3>Preview</h3>
+            <div id="preview-box" class="none">
+                <div id="preview">
+                    <img id="img-p">
+                    <svg id="img-r" style="display: none;" width="200" version="1.1" viewBox="0 0 244.05 26.087"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <g transform="translate(140.92 -90.432)">
+                            <g transform="translate(-187.29 -171.74)">
+                                <rect x="46.835" y="262.64" width="243.11" height="25.154" ry="12.577" fill="#fff"
+                                    fill-opacity=".107" fill-rule="evenodd" stroke="#ffffff"
+                                    stroke-dasharray="5.59864578, 5.59864578" stroke-linecap="round"
+                                    stroke-linejoin="round" stroke-opacity=".66255" stroke-width=".93311" />
+                                <text x="58.505112" y="281.35757" fill="#ffffff" font-family="'Ubuntu Mono'"
+                                    font-size="19.314px" font-weight="bold" letter-spacing="0px" stroke-width="1.3169"
+                                    word-spacing="0px" style="line-height:1.25" xml:space="preserve">
+                                    <tspan x="58.505112" y="281.35757" fill="#ffffff" stroke-width="1.3169">Nothing has been found!
+                                    </tspan>
+                                </text>
+                            </g>
+                        </g>
+                    </svg>
+                </div>
+            </div>
+
+            <div class="group-flex">
+                <div id="confirmed"></div>
+                <div id="link"></div>
+                <button id="copy">
+                    <svg width="6.35mm" height="6.35mm" viewBox="0 0 6.3499999 6.3499999">
+                        <g transform="translate(13.229 -179.53)">
+                            <path id="copy-img" transform="matrix(.26458 0 0 .26458 -13.229 179.53)"
+                                d="m5.9297 0.91602c-1.2941 0-2.3535 1.0614-2.3535 2.3555v12.889c0 1.2941 1.0594 2.3633 2.3535 2.3633h1.2695v2.1992c0 1.2941 1.0692 2.3613 2.3633 2.3613h8.5039c1.2941 0 2.3613-1.0672 2.3613-2.3613v-12.881c0-1.2941-1.0672-2.3633-2.3613-2.3633h-1.2637v-2.207c0-1.2941-1.0672-2.3555-2.3613-2.3555zm0 1.5879h8.5117c0.43858 0 0.76758 0.32908 0.76758 0.76758v2.207h-5.6465c-1.2941 0-2.3633 1.0692-2.3633 2.3633v9.0859h-1.2695c-0.43858 0-0.76758-0.32904-0.76758-0.76758v-12.889c0-0.43858 0.32898-0.76758 0.76758-0.76758zm3.6328 4.5703h5.6465v9.0859c0 0.43858-0.329 0.76758-0.76758 0.76758h-5.6465v-9.0859c0-0.43858 0.32898-0.76758 0.76758-0.76758zm7.2402 0h1.2637c0.43858 0 0.76758 0.32904 0.76758 0.76758v12.881c0 0.43858-0.329 0.76758-0.76758 0.76758h-8.5039c-0.43858 0-0.76758-0.32904-0.76758-0.76758v-2.1992h5.6465c1.2941 0 2.3613-1.0692 2.3613-2.3633z" />
+                        </g>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <a href="https://github.com/joseliojunior/gh-tags">
+            <img src="./gui/img/github.png">
+            <span>GitHub</span>
+        </a>
+        <a href="https://vercel.com/">
+            <img src="./gui/img/powered-by-vercel.svg">
+        </a>
+    </footer>
+</body>
+<script src="./gui/main.js"></script>
+
+</html>
