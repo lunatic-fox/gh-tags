@@ -4,37 +4,35 @@
   <h1>
     GitHub Tags
   </h1>
-
-**Se você ❤ este projeto e quer me apoiar, por favor considere fazer uma [doação](../donation/README.md).**
-    
-<a href="./docs/donation/README.md">
-<img src="../donation/src/jar-pt-br.png" width="120">
-</a>
-  
 </div>
 
+<div align="right">
+  <a href="https://github.com/lunatic-fox/lunatic-fox/blob/main/crypto-donations">
+    <img src="https://shields.io/badge/Crypto-Donations-098213?logo=bitcoin">
+  </a>
+</div>
 
 ## Sumário
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [🔸 GitHub Tags API](#how-main)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [🔹 Como usar](#how)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [🔹 Símbolos especiais no nome da linguagem](#lang)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [🔹 Customização](#cust)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [🔹 Linguagens sem cor](#non)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [🔸 GitHub Colors API](#how-use)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [🔹 Como usar](#how-h-use)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [🔸 Bibliotecas](#lib)<br>
+&emsp;&emsp;&emsp; [🔸 GitHub Tags API](#how-main)<br>
+&emsp;&emsp;&emsp;&emsp;&emsp; [🔹 Como usar](#how)<br>
+&emsp;&emsp;&emsp;&emsp;&emsp; [🔹 Símbolos especiais no nome da linguagem](#lang)<br>
+&emsp;&emsp;&emsp;&emsp;&emsp; [🔹 Customização](#cust)<br>
+&emsp;&emsp;&emsp;&emsp;&emsp; [🔹 Linguagens sem cor](#non)<br>
+&emsp;&emsp;&emsp; [🔸 GitHub Colors API](#how-use)<br>
+&emsp;&emsp;&emsp;&emsp;&emsp; [🔹 Como usar](#how-h-use)<br>
+&emsp;&emsp;&emsp; [🔸 Bibliotecas](#lib)<br>
 
 
 <h1 name="how-main">🔸 GitHub Tags API</h1>
 <h2 name="how">🔹 Como usar</h2>
 
-&nbsp;&nbsp;&nbsp;&nbsp;Use o ***[GitHub Tags GUI](https://gh-tags.vercel.app/)*** para gerar seu link ou copie e cole a URL modelo abaixo:
+&emsp;&emsp;Use o ***[GitHub Tags GUI](https://gh-tags.vercel.app/)*** para gerar seu link ou copie e cole a URL modelo abaixo:
 
 ~~~
 https://gh-tags.vercel.app/api?lang=[LANGUAGE NAME]
 ~~~
 
-&nbsp;&nbsp;&nbsp;&nbsp;Então substitua o valor de `lang=[LANGUAGE NAME]` por qualquer linguagem conhecida pelo Github.
+&emsp;&emsp;Então substitua o valor de `lang=[LANGUAGE NAME]` por qualquer linguagem conhecida pelo Github.
 
 ***[📃 Lista de referência de todas as linguagens conhecidas pelo Github](./list/README.md)***
 
@@ -44,7 +42,7 @@ Vejamos alguns exemplos:
 ~~~markdown
 ![Markdown](https://gh-tags.vercel.app/api?lang=markdown)
 ~~~
-**Resposta:** &nbsp;&nbsp;&nbsp;&nbsp; ![Markdown](https://gh-tags.vercel.app/api?lang=markdown)
+**Resposta:** &emsp;&emsp; ![Markdown](https://gh-tags.vercel.app/api?lang=markdown)
 
 <br>
 
@@ -52,47 +50,47 @@ Vejamos alguns exemplos:
 ~~~html
 <img src="https://gh-tags.vercel.app/api?lang=html" alt="HTML">
 ~~~
-**Resposta:** &nbsp;&nbsp;&nbsp;&nbsp; <img src="https://gh-tags.vercel.app/api?lang=html" alt="HTML">
+**Resposta:** &emsp;&emsp; <img src="https://gh-tags.vercel.app/api?lang=html" alt="HTML">
 
 <br>
 
 <h2 name="lang">🔹 Símbolos especiais no nome da linguagem</h2>
 
-&nbsp;&nbsp;&nbsp;&nbsp;Alguns nomes de linguagem tem `espaço`, `+`, `#` ou `*`. Nesses casos eles são substituídos por esses símbolos:
+&emsp;&emsp;Alguns nomes de linguagem tem `espaço`, `+`, `#` ou `*`. Nesses casos eles são substituídos por esses símbolos:
 
 - `espaço` > `-`<br>
-&nbsp;&nbsp;&nbsp;&nbsp;*ex.: `Regular expression` > `regular-expression`* &nbsp;&nbsp;&nbsp;&nbsp; ![](https://gh-tags.vercel.app/api?lang=regular-expression&type=squared&size=small)
+&emsp;&emsp;*ex.: `Regular expression` > `regular-expression`* &emsp;&emsp; ![](https://gh-tags.vercel.app/api?lang=regular-expression&type=squared&size=small)
 
 <br>
 
 - `+` > `-plus`<br>
-&nbsp;&nbsp;&nbsp;&nbsp;*ex.: `C++` > `c-plus-plus`* &nbsp;&nbsp;&nbsp;&nbsp; ![](https://gh-tags.vercel.app/api?lang=c-plus-plus&type=squared&size=small)
+&emsp;&emsp;*ex.: `C++` > `c-plus-plus`* &emsp;&emsp; ![](https://gh-tags.vercel.app/api?lang=c-plus-plus&type=squared&size=small)
 
 <br>
 
 - `#` > `-sharp`<br>
-&nbsp;&nbsp;&nbsp;&nbsp;*ex.: `C#` > `c-sharp`* &nbsp;&nbsp;&nbsp;&nbsp; ![](https://gh-tags.vercel.app/api?lang=c-sharp&type=squared&size=small)
+&emsp;&emsp;*ex.: `C#` > `c-sharp`* &emsp;&emsp; ![](https://gh-tags.vercel.app/api?lang=c-sharp&type=squared&size=small)
 
 <br>
 
 - `*` > `-asterisk`<br>
-&nbsp;&nbsp;&nbsp;&nbsp;*ex.: `F*` > `f-asterisk`* &nbsp;&nbsp;&nbsp;&nbsp; ![](https://gh-tags.vercel.app/api?lang=f-asterisk&type=squared&size=small)
+&emsp;&emsp;*ex.: `F*` > `f-asterisk`* &emsp;&emsp; ![](https://gh-tags.vercel.app/api?lang=f-asterisk&type=squared&size=small)
 
 <br>
 
 <h2 name="cust">🔹 Customização</h2>
 
-&nbsp;&nbsp;&nbsp;&nbsp;Existem algumas opções para a saída da tag listadas aqui:
+&emsp;&emsp;Existem algumas opções para a saída da tag listadas aqui:
 - `size=small` - Esta é a versão pequena da tag. (altura: 20px) - Altura padrão: 32px.
 - `type=squared` - Esta é a versão de caixa quadrada da tag. - Versão padrão: rounded (arredondada).
 
-&nbsp;&nbsp;&nbsp;&nbsp;Todas as opções podem ser adicionadas colocando um `&` antes da opção escolhida. Vejamos alguns exemplos:
+&emsp;&emsp;Todas as opções podem ser adicionadas colocando um `&` antes da opção escolhida. Vejamos alguns exemplos:
 
 ***JavaScript - versão pequena***
 ~~~markdown
 ![JavaScript](https://gh-tags.vercel.app/api?lang=javascript&size=small)
 ~~~
-**Resposta:** &nbsp;&nbsp;&nbsp;&nbsp; ![JavaScript](https://gh-tags.vercel.app/api?lang=javascript&size=small)
+**Resposta:** &emsp;&emsp; ![JavaScript](https://gh-tags.vercel.app/api?lang=javascript&size=small)
 
 <br>
 
@@ -100,7 +98,7 @@ Vejamos alguns exemplos:
 ~~~markdown
 ![JavaScript](https://gh-tags.vercel.app/api?lang=javascript&type=squared)
 ~~~
-**Resposta:** &nbsp;&nbsp;&nbsp;&nbsp; ![JavaScript](https://gh-tags.vercel.app/api?lang=javascript&type=squared)
+**Resposta:** &emsp;&emsp; ![JavaScript](https://gh-tags.vercel.app/api?lang=javascript&type=squared)
 
 <br>
 
@@ -108,13 +106,13 @@ Vejamos alguns exemplos:
 ~~~markdown
 ![JavaScript](https://gh-tags.vercel.app/api?lang=javascript&size=small&type=squared)
 ~~~
-**Resposta:** &nbsp;&nbsp;&nbsp;&nbsp; ![JavaScript](https://gh-tags.vercel.app/api?lang=javascript&size=small&type=squared)
+**Resposta:** &emsp;&emsp; ![JavaScript](https://gh-tags.vercel.app/api?lang=javascript&size=small&type=squared)
 
 <br>
 
 <h2 name="non">🔹 Linguagens sem cor</h2>
 
-&nbsp;&nbsp;&nbsp;&nbsp;Existem algumas linguagens sem uma cor específica e elas são apresentadas dessa forma.
+&emsp;&emsp;Existem algumas linguagens sem uma cor específica e elas são apresentadas dessa forma.
 
 <div align="center">
 
@@ -127,11 +125,11 @@ Vejamos alguns exemplos:
 <h1 name="how-use">🔸 GitHub Colors API</h1>
 <h2 name="how-h-use">🔹 How to use</h2>
 
-&nbsp;&nbsp;&nbsp;&nbsp;Use a URL modelo abaixo:
+&emsp;&emsp;Use a URL modelo abaixo:
 ~~~
 https://gh-tags.vercel.app/use?lang=[LANGUAGE NAME]
 ~~~
-&nbsp;&nbsp;&nbsp;&nbsp;Então substitua o valor de `lang=[LANGUAGE NAME]` por qualquer linguagem conhecida pelo Github.
+&emsp;&emsp;Então substitua o valor de `lang=[LANGUAGE NAME]` por qualquer linguagem conhecida pelo Github.
 
 <div align="center">
 
@@ -167,15 +165,15 @@ https://gh-tags.vercel.app/use?lang=json
 
 <h1 name="lib">🔸 Bibliotecas</h1>
 
-&nbsp;&nbsp;&nbsp;&nbsp;Olhe essas bibliotecas incríveis usadas neste projeto!
+&emsp;&emsp;Olhe essas bibliotecas incríveis usadas neste projeto!
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;📕 ***[@vercel/node](https://vercel.com/docs/runtimes)***
+&emsp;&emsp;&emsp;📕 ***[@vercel/node](https://vercel.com/docs/runtimes)***
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;📕 ***[axios](https://github.com/axios/axios)***
+&emsp;&emsp;&emsp;📕 ***[axios](https://github.com/axios/axios)***
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;📕 ***[text-to-svg](https://www.npmjs.com/package/text-to-svg)***
+&emsp;&emsp;&emsp;📕 ***[text-to-svg](https://www.npmjs.com/package/text-to-svg)***
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;📕 ***[yaml](https://www.npmjs.com/package/yaml)***
+&emsp;&emsp;&emsp;📕 ***[yaml](https://www.npmjs.com/package/yaml)***
 
 <div align="center">
 
